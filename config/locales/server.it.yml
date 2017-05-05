@@ -1,0 +1,352 @@
+it:
+  site_settings:
+    discourse_narrative_bot_enabled: 'Abilita Discourse Narrative Bot'
+    disable_discourse_narrative_bot_welcome_post: "Disabilita il messaggio di benvenuto da Discourse Narrative Bot"
+    discourse_narrative_bot_ignored_usernames: "Gli username che Discourse Narrative Bot dovrebbe ignorare"
+
+  discourse_narrative_bot:
+    bio: "Ciao, io non sono una persona reale. Io sono un bot. Per interagire con me inviami un messaggio o menziona**`@%{discobot_username}`** ovunque."
+
+    timeout:
+      message: |-
+        Hey @%{username}, sto solo controllando perchè è da un po' che non ti sento.
+
+        - Per continuare, rispondimi in qualsiasi momento.
+
+        - Se vuoi saltare questo passaggio, dimmi `%{skip_trigger}`.
+
+        - Per ricominciare, dimmi `%{reset_trigger}`.
+
+        Se preferisci non continuare, va bene lo stesso. Io sono un robot. Non ferirai i miei sentimenti. :sob:
+
+    track_selector:
+      random_mention:
+        dice: |-
+          :game_die: dice roll: %{results}
+        quote: |-
+          > :left_speech_bubble: _%{quote}_ &mdash; %{author}
+        tracks: |-
+          Ciao! Attualmente so come fare le seguenti cose:
+
+          `@%{discobot_username} %{reset_trigger} %{default_track}`
+          > Avvia una delle seguenti narrazioni interattive: %{tracks}.
+        bot_actions: |-
+          `@%{discobot_username} roll 2d6`
+          > :game_die: dice roll: 3, 6
+
+          `@%{discobot_username} quote`
+          > :left_speech_bubble: _Fare un atto di gentilezza casuale, senza nessuna aspettativa di ricompensa, con la certezza che un giorno qualcuno potrebbe fare lo stesso per te_ &mdash; Principessa Diana
+
+      do_not_understand:
+        first_response: |-
+          Hey, grazie per la risposta!
+
+          Sfortunatamente, come un bot mal programmato, non posso capire la tua risposta. :frowning:
+        track_response:
+          Puoi provare di nuovo, o se vuoi saltare questo passaggio, dimmi `%{skip_trigger}`. Altrimenti per ricominciare, dimmi `%{reset_trigger}`.
+        second_response: |-
+          Aw, scusa. Non sto ancora capendo. :anguished:
+
+          Non sei tu – sono io. E' colpa dei miei programmatori! Sono terribili!
+
+          Forse vuoi ricominciare da capo? Dimmi `%{reset_trigger}` Per ricominciare. Nel frattempo io me ne starò in disparte.
+
+    new_user_narrative:
+      cert_title: "In riconoscimento del successo nel completamento del tutorial come nuovo utente"
+
+      hello:
+        title: ":robot: Saluti!"
+        message: |-
+          Grazie per esserti unito a %{title}, e benvenuto!
+
+          - Io sono solo un robot, ma [il nostro amichevole staff](/about) è qui per aiutare se hai bisogno di contattare una persona.
+
+          - Per ragioni di sicurezza, abbiamo temporaneamente limitato ciò che i nuovi utenti possono fare. Potrai guadagnare nuove abilità (e [distintivi](/badges)) appena ti conosceremo meglio.
+
+          - Noi crediamo in una [comunità dal comportamento civile](/guidelines) in ogni momento.
+
+      onebox:
+        instructions: |-
+          Successivamente, puoi condividere uno di questi collegamenti con me? Rispondi con **un collegamento su una riga a sè stante**, e verrà automaticamente espanso per includere un bel sommario.
+
+          Per copiare un collegamento, toccalo e tienilo premuto su mobile, o fai click col tasto destro del mouse:
+
+          - https://en.wikipedia.org/wiki/Inherently_funny_word
+          - https://en.wikipedia.org/wiki/Death_by_coconut
+          - https://en.wikipedia.org/wiki/Calculator_spelling
+        reply: |-
+          Fantastico! Questo funzionerà per la maggior parte <img src="/images/font-awesome-link.png" width="16" height="16"> dei collegamenti. Ricorda, deve essere su una linea _da solo_, con nient'altro davanti o dietro.
+        not_found: |-
+          Mi dispiace, non riesco a trovare il collegamento nella tua risposta! :cry:
+
+          Puoi provare ad aggiungere il seguente collegamento, su una riga da solo, nella tua prossima risposta?
+
+          - https://en.wikipedia.org/wiki/Exotic_Shorthair
+
+      images:
+        instructions: |-
+          Ecco l'immagine di un unicorno:
+
+          <img src="/images/unicorn.jpg" width="520" height="381">
+
+          Se ti piace (e a chi non piacerebbe!) vai avanti e premi il pulsante mi pace :heart: sotto questo messaggio per farmelo sapere.
+
+          Puoi **rispondere con un'immagine?** Qualsiasi immagine funzionerà! Trascinala e rilasciala, premi il pulsante carica, oppure copiala e incollala.
+        reply: |-
+          Bell'immagine – Ho premuto il pulsante mi piace :heart: per farti sapere quanto l'ho apprezzata :heart_eyes:
+        like_not_found: |-
+          Hai dimenticato di mettere mi piace :heart: al mio [messaggio?](%{url}) :crying_cat_face:
+        not_found: |-
+          Sembra che tu non abbia caricato un'immagine così ne ho scelta una io che sono _sicuro_ ti piacerà.
+
+          `%{image_url}`
+
+          Prova a caricare questa nel prossimo messaggio, o incolla il collegamento su una riga da solo!
+
+      formatting:
+        instructions: |-
+          Puoi scrivere alcune parole in **grassetto** o _italico_ nella tua risposta?
+
+          - digita `**grassetto**` o `_italico_`
+
+          - oppure premi i pulsanti <kbd><b>G</b></kbd> o <kbd><i>I</i></kbd> sull'editor
+
+        reply: |-
+          Ottimo lavoro! Anche HTML e BBCode funzionano per la formattazione – per saperne di più [prova questo tutorial](http://commonmark.org/help) :nerd:
+        not_found: |-
+          Aww, non ho trovato nessuna formattazione nella tua risposta. :pencil2:
+
+          Puoi provare di nuovo? Usa i pulsanti <kbd><b>G</b></kbd> grassetto o <kbd><i>I</i></kbd> italico nell'editor se sei rimasto bloccato.
+
+      quoting:
+        instructions: |-
+          Puoi provare a citarmi nella tua risposta, così saprò esattamente a quale parte del mio messaggio stai rispondendo?
+
+          > Se questo è caffè, per favore portame del thè; ma se questo è thè, per favore portami del caffè.
+          >
+          > Un vantaggio del parlare con sè stessi è che almeno sai che qualcuno ti sta ascoltando.
+          >
+          > Alcune persone si fanno strada con le parole e altre persone… oh, uh, non hanno una strada.
+
+          Seleziona il testo della citazione &uarr; che preferisci, e poi premi il pulsante **Cita** che comparirà sopra il testo selezionato – o il pulsante **Rispondi** in fondo a questo messaggio.
+
+          Sotto la citazione, digita una o due parole sul motivo per cui hai scelto proprio questa perchè sono curioso :thinking:
+        reply: |-
+          Bel lavoro, hai scelto la mia citazione preferita! :left_speech_bubble:
+        not_found: |-
+          Hmm mi sembra che tu non mi abbia citato nella tua risposta!
+
+          Selezionare un qualsiasi testo del mio messaggio farà apparire il pulsante <kbd>**Cita**</kbd>. E anche premere **Rispondi** con qualsiasi testo selezionato funzionerà! Puoi provare di nuovo?
+
+      bookmark:
+        instructions: |-
+          Se vuoi saperne di più, seleziona <img src="/images/font-awesome-ellipsis.png" width="16" height="16"> qui sotto e <img src="/images/font-awesome-bookmark.png" width="16" height="16"> inserisci **questo messaggio privato nei segnalibri**.  Se lo fai, ci potrebbe essere un :gift: nel tuo futuro!
+        reply: |-
+          Eccellente! Ora potrai tornare facilmente a questa conversazione privata in ogni momento, proprio dalla [scheda segnalibri sul tuo profilo](%{profile_page_url}/activity/bookmarks). Basta selezionare l'immagine del tuo profilo in alto a destra &#8599;
+        not_found: |-
+          Uh oh, non vedo nessun segnalibro in questo argomento. Hai trovato il pulsante segnalibro sotto ogni messaggio?  Usa mostra altro <img src="/images/font-awesome-ellipsis.png" width="16" height="16"> per rivelare azioni aggiuntive se necessario.
+
+      emoji:
+        instructions: |-
+          Puoi avermi visto utilizzare delle piccole immagini nelle mie risposte :blue_car::dash: che si chiamano [emoji](https://en.wikipedia.org/wiki/Emoji). Puoi **aggiungere una emoji** alla tua risposta? Uno di questi funzionerà:
+
+          - Digita `:) ;) :D :P :O`
+
+          - Digita due punti <kbd>:</kbd> poi completa il nome della emoji `:tada:`
+
+          - Premi il pulsante emoji <img src="/images/font-awesome-smile.png" width="16" height="16"> nell'editor, o sulla tastiera mobile
+        reply: |-
+          Questo è :sparkles: _emojitastico!_ :sparkles:
+        not_found: |-
+          Oops, non vedo nessuna emoji nella tua risposta! Oh no! :sob:
+
+          Prova digitando i due punti <kbd>:</kbd> per far apparire il selettore delle emoji, poi digita le prime lettere della emoji che vuoi, ad esempio `:bird:`
+
+          Oppure premi il pulsante emoji <img src="/images/font-awesome-smile.png" width="16" height="16"> nell'editor.
+
+          (Se sei su un dispositivo mobile, puoi anche immettere l'emoji direttamente dalla tastiera.)
+
+      mention:
+        instructions: |-
+          Qualche volta potresti volere l'attenzione di una persona, anche se non stai rispondendo direttamente a lei. Digita `@` poi completa il suo username per menzionarla.
+
+          Puoi menzionare **`@%{discobot_username}`** nella tua risposta?
+        reply: |-
+          _Qualcuno ha fatto il mio nome!?_ :raised_hand: Credo che sia stato tu! :wave:  Bene, eccomi qui! Grazie per avermi menzionato.  :ok_hand:
+        not_found: |-
+          Non vedo il mio nome da nessuna parte qui :frowning: Puoi provare a menzionarmi di nuovo come `@%{discobot_username}`?
+
+          (E sì, il mio username inizia con _disco_, come nella mania dance degli anni 70. Io [amo la vita notturna!](https://www.youtube.com/watch?v=B_wGI3_sGf8) :dancer:)
+
+      flag:
+        instructions: |-
+          We like our discussions friendly, and we need your help to [keep things civilized](%{guidelines_url}). If you see a problem, please flag to privately let the author, or [our helpful staff](%{about_url}), know about it.
+
+          >  :imp: I wrote something nasty here
+
+          I guess you know what to do. Go ahead and **flag this post** <img src="/images/font-awesome-flag.png" width="16" height="16"> as inappropriate!
+        reply: |-
+          [Our staff](/groups/staff) will be privately notified about your flag. If enough community members flag a post, it will also be automatically hidden as a precaution. (Since I didn’t actually write a nasty post :angel:, I’ve gone ahead and removed the flag for now.)
+        not_found: |-
+          Oh no, my nasty post hasn’t been flagged yet. :worried: Can you flag it as inappropriate using the **flag** <img src="/images/font-awesome-flag.png" width="16" height="16">? Don’t forget to use the show more button <img src="/images/font-awesome-ellipsis.png" width="16" height="16"> to reveal more actions for each post.
+
+      search:
+        instructions: |-
+          _psst_ … I’ve hidden a surprise in one of my previous replies. If you’re up for the challenge, **select the search icon** <img src="/images/font-awesome-search.png" width="16" height="16"> at the top right &#8599; to search for it.
+
+          <small>Try searching for the term "capy&#8203;bara" in this topic</small>
+        hidden_message: |-
+          How did you miss this capybara? :wink:
+
+          <img src="/images/capybara-eating.gif"/>
+
+          Did you notice you’re now back at the beginning? Feed this poor hungry capybara by **replying with the `:herb:` emoji** and you’ll be automatically taken to the end.
+        reply: |-
+          Yay you found it :tada:
+
+          - For more detailed searches, head over to the [full search page](%{search_url}).
+
+          - To jump anywhere in a long discussion, try the topic timeline controls on the right (and bottom, on mobile).
+
+          - If you have a physical :keyboard:, press <kbd>?</kbd> to view our handy keyboard shortcuts.
+        not_found: |-
+          Hmm… looks like you might be having trouble. Sorry about that. Did you search <img src="/images/font-awesome-search.png" width="16" height="16"> for the term **capy&#8203;bara**?
+
+      end:
+        message: |-
+          Thanks for sticking with me @%{username}! I made this for you, I think you’ve earned it:
+
+          %{certificate}
+
+          That’s all for now! Check out [**our latest discussion topics**](/latest) or [**discussion categories**](/categories). :sunglasses:
+
+          (If you’d like to speak with me again to learn more, just message or mention `@%{discobot_username}` any time!)
+
+      certificate:
+        alt: 'Certificate of Achievement'
+
+    advanced_user_narrative:
+      cert_title: "In recognition of successful completion of the advanced user tutorial"
+      title: ':arrow_up: Advanced user features'
+      start_message: |-
+        Hi @%{username}, let’s cover some advanced features.
+
+      edit:
+        bot_created_post_raw: "@%{discobot_username} is, by far, the coolest bot I know :wink:"
+        instructions: |-
+          Everyone makes mistakes. But don’t worry, you can always edit your posts to fix them!
+
+          Can you begin by **editing** the post I just created on your behalf?
+        not_found: |-
+          It looks like you’ve yet to edit the [post](%{url}) I created for you. Can you try again?
+
+          Use the <img src="/images/font-awesome-pencil.png" width="16" height="16"> icon to bring up the editor.
+        reply: |-
+          Great work!
+
+          Note that edits made after 5 minutes will show up as public edit revisions, and a little pencil icon will appear at the upper right with the revision count.
+
+      delete:
+        instructions: |-
+          If you’d like to withdraw a post you made, you can delete it.
+
+          Go ahead and **delete** any of your posts above by using the <img src="/images/font-awesome-trash.png" width="16" height="16"> **delete** action.
+        not_found: |-
+          I don’t see any deleted posts yet? Remember <img src="/images/font-awesome-ellipsis.png" width="16" height="16"> show more will reveal <img src="/images/font-awesome-trash.png" width="16" height="16"> delete.
+        reply: |-
+          Whoa! :boom:
+
+          To preserve continuity of discussions, deletes aren’t immediate, so the post will be removed after some time.
+
+      recover:
+        deleted_post_raw: 'Why did @%{discobot_username} delete my post? :anguished:'
+        instructions: |-
+          Oh no! It looks like I accidentally deleted a new post that I just created for you.
+
+          Can you do me a favor and <img src="/images/font-awesome-rotate-left.png" width="16" height="16"> **undelete** it?
+        not_found: |-
+          Having trouble? Remember <img src="/images/font-awesome-ellipsis.png" width="16" height="16"> show more will reveal <img src="/images/font-awesome-rotate-left.png" width="16" height="16"> undelete.
+        reply: |-
+          Phew, that was a close one! Thanks for fixing that :wink:
+
+          Do note that you only have 24 hours to undelete a post.
+
+      category_hashtag:
+        instructions: |-
+          Did you know that you can refer to categories and tags in your post? For example, have you seen the %{category} category?
+
+          Type `#` in the middle of a sentence and select any category or tag.
+        not_found: |-
+          Hmm, I don’t see a category in there anywhere. Note that `#` can't be the first character. Can you copy this in your next reply?
+
+              I can create a category link via #
+        reply: |-
+          Excellent! Remember this works for both categories _and_ tags, if tags are enabled.
+
+      change_topic_notification_level:
+        instructions: |-
+          Every topic has a notification level. It starts at 'normal', which means you’ll normally only be notified when someone is speaking directly to you.
+
+          By default, the notification level for a private message is set to the highest level of 'watching', which means you you’ll be notified of every new reply.  But you can override the notification level for _any_ topic to 'watch', 'tracking' or 'muted'.
+
+          Let’s try changing the notification level for this topic. At the bottom of the topic, you’ll find a button which shows that you’re **watching** this topic. Can you change the notification level to **tracking**?
+        not_found: |-
+          It looks like you’re still watching :eyes: this topic! If you’re having trouble finding it, the notification level button is located at the bottom of the topic.
+        reply: |-
+          Awesome work! I hope you didn’t mute this topic since I can be a little talkative at times :grin:.
+
+          Note that when you reply to a topic, or read a topic for more than a few minutes, it is automatically set to a notification level of 'tracking'. You can change this in [your user preferences](/my/preferences).
+
+      poll:
+        instructions: |-
+          Did you know you can add a poll to any post? Try using the <img src="/images/font-awesome-gear.png" width="16" height="16"> gear in the editor to **build a poll**.
+        not_found: |-
+          Whoops! There wasn’t any poll in your reply.
+
+          Use the <img src="/images/font-awesome-gear.png" width="16" height="16"> gear icon in the editor, or copy and paste this poll in your next reply:
+
+              [poll]
+              * :cat:
+              * :dog:
+              [/poll]
+        reply: |-
+          Hey, nice poll! How’d I do in teaching you?
+
+          [poll]
+          * :+1:
+          * :-1:
+          [/poll]
+      details:
+        instructions: |-
+          Sometimes you may wish to **hide details** in your replies:
+
+          - When you’re discussing plot points of a movie or TV show that would be a considered a spoiler.
+
+          - When your post needs lots of optional details that may be overwhelming when read all at once.
+
+          [details=Select this to see how it works!]
+          1. Select the <img src="/images/font-awesome-gear.png" width="16" height="16"> gear in the editor.
+          2. Select "Hide Details".
+          3. Edit the details summary and add your content.
+          [/details]
+
+          Can you use the <img src="/images/font-awesome-gear.png" width="16" height="16"> gear in the editor to add a details section to your next reply?
+        not_found: |-
+          Having trouble creating a details widget? Try including the following in your next reply:
+
+              [details=Select me for details]
+              Here are the details
+              [/details]
+        reply: |-
+          Great work — your attention to _detail_ is admirable!
+      end:
+        message: |-
+          You blazed through this like an _advanced user_ indeed :bow:
+
+          %{certificate}
+
+          That’s all I have for you.
+
+          Bye for now! If you’d like to speak with me again, send me a message any time :sunglasses:
+      certificate:
+        alt: 'Advanced User Track Certificate of Achievement'
